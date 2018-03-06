@@ -31,6 +31,7 @@ export default {
     this.service
       .dicionario()
       .then(palavras => this.todasAsPalavras = palavras);
+
   }
 }
 </script>

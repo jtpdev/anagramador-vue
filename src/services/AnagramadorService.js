@@ -9,8 +9,7 @@ export default class AnagramadorService {
         return this._resource
             .query()
             .then(res => res.json(), err => {
-                console.log(err);
-                throw new Error('Não foi possível obter as fotos');
+                throw new Error('Dicionário não encontrado');
             });
     }  
 
