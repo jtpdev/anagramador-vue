@@ -13,12 +13,24 @@
 
 
 <script>
+import AnagramadorService from '../services/AnagramadorService';
+
 export default {
   data() {
     return {
       letras: [],
-      palavras: []
-    };
+      palavras: [],
+      todasAsPalavras: []
+    }
+  },
+
+  created() {
+
+    this.service = new AnagramadorService(this.$resource);
+
+    this.service
+      .dicionario()
+      .then(palavras => this.todasAsPalavras = palavras);
   }
 }
 </script>
