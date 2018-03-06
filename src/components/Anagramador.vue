@@ -29,8 +29,7 @@ export default {
     this.service = new AnagramadorService(this.$resource);
 
     this.service
-      .dicionario()
-      .then(palavras => this.todasAsPalavras = palavras);
+      .gerarAnagramas();
 
   }
 }
