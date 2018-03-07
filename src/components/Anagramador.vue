@@ -29,7 +29,7 @@ export default {
     this.service = new AnagramadorService(this.$resource);
 
     this.service
-      .gerarAnagramas();
+      .gerarAnagramas(3,7);
 
   }
 }
