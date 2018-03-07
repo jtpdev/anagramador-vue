@@ -13,26 +13,27 @@
 
 
 <script>
-import AnagramadorService from '../services/AnagramadorService';
+import AnagramadorService from "../services/AnagramadorService";
 
 export default {
   data() {
     return {
       letras: [],
-      palavras: [],
-      todasAsPalavras: []
-    }
+      palavras: []
+    };
   },
 
   created() {
-
     this.service = new AnagramadorService(this.$resource);
 
     this.service
-      .gerarAnagramas(3,7);
-
+      .gerarAnagramas(3, 7)
+      .then(anagramador => {
+        this.letras = anagramador.letras;
+        this.palavras = anagramador.anagramas;
+      });
   }
-}
+};
 </script>
 
 <style>

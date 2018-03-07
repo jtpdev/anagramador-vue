@@ -13,16 +13,15 @@ export default class AnagramadorService {
     }
 
     gerarAnagramas(min, max) {
-        this.dicionario()
+       return this.dicionario()
             .then(palavras => {
                 this._palavras = palavras;
                 let palavraBase = this._getPalavraPorTamanho(max);
                 let letras = palavraBase.split('');
                 let anagramas = this._encontrarPalavras(palavraBase, min, max);
-                anagramas = anagramas.sort((p1,p2) => p1.length - p2.length)
-                console.log(palavraBase);
-                console.log(letras);
-                console.log(anagramas);
+                anagramas = anagramas.sort((p1, p2) => p1.length - p2.length);
+                letras = letras.sort((l1, l2) => Math.random());
+                return {letras, anagramas};
             });
     }
 
