@@ -5,7 +5,11 @@
     </div>
     <div class="palavras">
         <ul>
-            <li v-for="palavra in palavras">{{ palavra }}</li>
+            <li v-for="palavra in palavrasEscondidas">
+              <div class="palavra">
+                {{ palavra }}
+              </div>
+            </li>
         </ul>
     </div>
   </div>
@@ -19,23 +23,43 @@ export default {
   data() {
     return {
       letras: [],
-      palavras: []
+      palavras: [],
+      palavrasEscondidas: []
     };
   },
 
   created() {
     this.service = new AnagramadorService(this.$resource);
 
-    this.service
-      .gerarAnagramas(3, 7)
-      .then(anagramador => {
-        this.letras = anagramador.letras;
-        this.palavras = anagramador.anagramas;
-      });
+    this.service.gerarAnagramas(3, 7).then(anagramador => {
+      this.letras = anagramador.letras;
+      this.palavras = anagramador.anagramas;
+      this.palavrasEscondidas = this.service.esconderPalavras(this.palavras);
+    });
   }
 };
 </script>
 
-<style>
+<style lang="scss">
 
+$cor-do-botao: tomato;
+
+button {
+  background-color: $cor-do-botao;
+  color: white;
+  margin: 5px;
+  border-color: $cor-do-botao;
+  border-radius: 5px;
+}
+
+li {
+  list-style: none;
+  display: inline;
+}
+
+.palavra {
+  width: 25%;
+  display: inline-block;
+  float: left;
+}
 </style>

@@ -25,6 +25,12 @@ export default class AnagramadorService {
             });
     }
 
+    esconderPalavras(palavras){
+        return palavras.map(
+            palavra => 
+                palavra.replace(/[abcdefghijklmnopqrstuvwxyz]/ig,'*'));
+    }
+
     _getPalavraPorTamanho(max) {
         let palavrasComTamanhoMaximo = this._palavras
             .filter(p => p.length == max);
