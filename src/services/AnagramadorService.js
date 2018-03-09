@@ -13,7 +13,7 @@ export default class AnagramadorService {
     }
 
     gerarAnagramas(min, max) {
-       return this.dicionario()
+        return this.dicionario()
             .then(palavras => {
                 this._palavras = palavras;
                 let palavraBase = this._getPalavraPorTamanho(max);
@@ -21,14 +21,21 @@ export default class AnagramadorService {
                 let anagramas = this._encontrarPalavras(palavraBase, min, max);
                 anagramas = anagramas.sort((p1, p2) => p1.length - p2.length);
                 letras = letras.sort((l1, l2) => Math.random());
-                return {letras, anagramas};
+                return { letras, anagramas };
             });
     }
 
-    esconderPalavras(palavras){
-        return palavras.map(
-            palavra => 
-                palavra.replace(/[abcdefghijklmnopqrstuvwxyz]/ig,'*'));
+    esconderPalavras(palavras) {
+        let anagramas = [];
+        palavras.forEach(
+            palavra => {
+                anagramas.push({
+                    palavraEscondida: palavra.replace(/[abcdefghijklmnopqrstuvwxyz]/ig, '*'),
+                    palavra
+
+                });
+            });
+        return anagramas;
     }
 
     _getPalavraPorTamanho(max) {
@@ -49,22 +56,22 @@ export default class AnagramadorService {
         );
     }
 
-    _temTodasAsLetras(palavraBase, palavra){
+    _temTodasAsLetras(palavraBase, palavra) {
         let tem = true;
         palavra.split('').forEach(letra => {
-            if(!palavraBase.includes(letra)){
+            if (!palavraBase.includes(letra)) {
                 tem = false;
             }
         });
         return tem;
     }
 
-    _temLetrasAMais(palavraBase, palavra){
+    _temLetrasAMais(palavraBase, palavra) {
         let tem = false;
         palavraBase.split('').forEach(
             letra => {
-                if((palavra.match(new RegExp(letra, 'g')) || []).length > 
-                    (palavraBase.match(new RegExp(letra, 'g')) || []).length){
+                if ((palavra.match(new RegExp(letra, 'g')) || []).length >
+                    (palavraBase.match(new RegExp(letra, 'g')) || []).length) {
                     tem = true;
                 }
             }

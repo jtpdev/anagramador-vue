@@ -1,13 +1,20 @@
 <template>
   <div class="conteudo">
     <div class="botoes">
-        <button v-for="letra in letras">{{ letra }}</button>
+        <button v-for="(letra, indice) in letras" @click="inserirLetra(letra, indice)" v-show="botoesRemovidos.indexOf(indice) < 0">{{ letra }}</button>
+    </div>
+    <div>
+      {{ anagrama }}
+      <button @click="limparAnagrama">Limpar</button>
     </div>
     <div class="palavras">
         <ul>
             <li v-for="palavra in palavrasEscondidas">
-              <div class="palavra">
-                {{ palavra }}
+              <div class="palavra" v-show="palavrasEncontradas.indexOf(palavra.palavra) > -1">
+                {{ palavra.palavra }}
+              </div>
+              <div class="palavra" v-show="palavrasEncontradas.indexOf(palavra.palavra) == -1">
+                {{ palavra.palavraEscondida }}
               </div>
             </li>
         </ul>
@@ -24,8 +31,26 @@ export default {
     return {
       letras: [],
       palavras: [],
-      palavrasEscondidas: []
+      palavrasEscondidas: [],
+      palavrasEncontradas: [],
+      botoesRemovidos: [],
+      anagrama: ""
     };
+  },
+  
+  methods: {
+    inserirLetra(letra, indice) {
+      this.anagrama += letra;
+      this.botoesRemovidos.push(indice);
+      if(this.palavras.indexOf(this.anagrama) > -1 && this.palavrasEncontradas.indexOf(this.anagrama) == -1){
+        this.palavrasEncontradas.push(this.anagrama);
+        this.limparAnagrama();
+      }
+    },
+    limparAnagrama(){
+      this.anagrama = "";
+      this.botoesRemovidos.length = 0;
+    }
   },
 
   created() {
@@ -41,7 +66,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 $cor-do-botao: tomato;
 
 button {
