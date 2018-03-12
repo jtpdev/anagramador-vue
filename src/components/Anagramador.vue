@@ -1,8 +1,10 @@
 <template>
   <div class="conteudo">
-    <div class="mensagem" v-show="mensagem">
-        {{ mensagem }}
-    </div>
+    <transition name="mensagem">
+      <div class="mensagem" v-show="mensagem">
+          {{ mensagem }}
+      </div>
+    </transition>
     <div class="botoes">
         <button v-for="(letra, indice) in letras" @click="inserirLetra(letra, indice)" v-show="botoesRemovidos.indexOf(indice) < 0">{{ letra }}</button>
     </div>
@@ -37,33 +39,34 @@ export default {
       palavrasEscondidas: [],
       palavrasEncontradas: [],
       botoesRemovidos: [],
-      anagrama: '',
-      mensagem: ''
+      anagrama: "",
+      mensagem: ""
     };
   },
-  
+
   methods: {
     inserirLetra(letra, indice) {
       this.anagrama += letra;
       this.botoesRemovidos.push(indice);
-      if(this.palavras.indexOf(this.anagrama) > -1 && this.palavrasEncontradas.indexOf(this.anagrama)
-        == -1){
+      if (
+        this.palavras.indexOf(this.anagrama) > -1 &&
+        this.palavrasEncontradas.indexOf(this.anagrama) == -1
+      ) {
         this.palavrasEncontradas.push(this.anagrama);
-        if(this.palavrasEncontradas.length == 1){
-          this.mensagem = 'Parabéns, você encontrou seu primeiro anagrama.'
+        if (this.palavrasEncontradas.length == 1) {
+          this.mensagem = "Parabéns, você encontrou seu primeiro anagrama.";
         }
-        if(this.palavrasEncontradas.length == (this.palavras.length - 1)){
-          this.mensagem = 'Vamos lá, só falta uma.'
+        if (this.palavrasEncontradas.length == this.palavras.length - 1) {
+          this.mensagem = "Vamos lá, só falta uma.";
         }
-        if(this.palavrasEncontradas.length == this.palavras.length){
-          this.mensagem =
-            'Parabéns, você encontrou todos os anagramas!'
+        if (this.palavrasEncontradas.length == this.palavras.length) {
+          this.mensagem = "Parabéns, você encontrou todos os anagramas!";
         }
-        setTimeout(() => this.mensagem = '', 2500);
+        setTimeout(() => (this.mensagem = ""), 2500);
         this.limparAnagrama();
       }
     },
-    limparAnagrama(){
+    limparAnagrama() {
       this.anagrama = "";
       this.botoesRemovidos.length = 0;
     }
@@ -85,30 +88,30 @@ export default {
 $cor-do-botao: steelblue;
 
 button {
- background-color: $cor-do-botao;
- color: white;
- margin: 5px;
- border-color: $cor-do-botao;
- border-radius: 5px;
- font-size: 20px;
+  background-color: $cor-do-botao;
+  color: white;
+  margin: 5px;
+  border-color: $cor-do-botao;
+  border-radius: 5px;
+  font-size: 20px;
 }
 
 li {
- list-style: none;
- display: inline;
+  list-style: none;
+  display: inline;
 }
 
 .palavra {
- width: 25%;
- display: inline-block;
- float: left;
- font-size: 20px;
- color: $cor-do-botao;
- margin-bottom: 15px;
+  width: 25%;
+  display: inline-block;
+  float: left;
+  font-size: 20px;
+  color: $cor-do-botao;
+  margin-bottom: 15px;
 }
 
 .representacao {
- color: tomato;
+  color: tomato;
 }
 
 .mensagem {
@@ -117,4 +120,13 @@ li {
   padding: 15px;
 }
 
+.mensagem-enter,
+.mensagem-leave-to {
+  opacity: 0;
+}
+
+.mensagem-enter-active,
+.mensagem-leave-active {
+  transition: opacity 0.3s;
+}
 </style>
