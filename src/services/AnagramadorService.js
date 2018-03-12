@@ -28,10 +28,10 @@ export default class AnagramadorService {
     esconderPalavras(palavras) {
         let anagramas = [];
         palavras.forEach(
-            palavra => {
+            anagrama  => {
                 anagramas.push({
-                    palavraEscondida: palavra.replace(/[abcdefghijklmnopqrstuvwxyz]/ig, '*'),
-                    palavra
+                    representacaoDaPalavra: anagrama.replace(/[abcdefghijklmnopqrstuvwxyz]/ig, '*'),
+                    anagrama 
 
                 });
             });

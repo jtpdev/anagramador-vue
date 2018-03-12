@@ -10,11 +10,11 @@
     <div class="palavras">
         <ul>
             <li v-for="palavra in palavrasEscondidas">
-              <div class="palavra" v-show="palavrasEncontradas.indexOf(palavra.palavra) > -1">
-                {{ palavra.palavra }}
+              <div class="palavra" v-show="palavrasEncontradas.indexOf(palavra.anagrama) > -1">
+                {{ palavra.anagrama }}
               </div>
-              <div class="palavra" v-show="palavrasEncontradas.indexOf(palavra.palavra) == -1">
-                {{ palavra.palavraEscondida }}
+              <div class="palavra representacao" v-show="palavrasEncontradas.indexOf(palavra.anagrama) == -1">
+                {{ palavra.representacaoDaPalavra }}
               </div>
             </li>
         </ul>
@@ -66,24 +66,33 @@ export default {
 </script>
 
 <style lang="scss">
-$cor-do-botao: tomato;
+$cor-do-botao: steelblue;
 
 button {
-  background-color: $cor-do-botao;
-  color: white;
-  margin: 5px;
-  border-color: $cor-do-botao;
-  border-radius: 5px;
+ background-color: $cor-do-botao;
+ color: white;
+ margin: 5px;
+ border-color: $cor-do-botao;
+ border-radius: 5px;
+ font-size: 20px;
 }
 
 li {
-  list-style: none;
-  display: inline;
+ list-style: none;
+ display: inline;
 }
 
 .palavra {
-  width: 25%;
-  display: inline-block;
-  float: left;
+ width: 25%;
+ display: inline-block;
+ float: left;
+ font-size: 20px;
+ color: $cor-do-botao;
+ margin-bottom: 15px;
 }
+
+.representacao {
+ color: tomato;
+}
+
 </style>
