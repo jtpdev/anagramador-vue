@@ -18,9 +18,11 @@
               <div class="palavra" v-show="palavrasEncontradas.indexOf(palavra.anagrama) > -1">
                 {{ palavra.anagrama }}
               </div>
-              <div class="palavra representacao" v-show="palavrasEncontradas.indexOf(palavra.anagrama) == -1">
-                {{ palavra.representacaoDaPalavra }}
-              </div>
+              <transition name="representacao">
+                <div class="palavra representacao" v-show="palavrasEncontradas.indexOf(palavra.anagrama) == -1">
+                  {{ palavra.representacaoDaPalavra }}
+                </div>
+              </transition>
             </li>
         </ul>
     </div>
@@ -129,4 +131,5 @@ li {
 .mensagem-leave-active {
   transition: opacity 0.3s;
 }
+
 </style>
