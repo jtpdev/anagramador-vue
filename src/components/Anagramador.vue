@@ -1,5 +1,8 @@
 <template>
   <div class="conteudo">
+    <div class="mensagem" v-show="mensagem">
+        {{ mensagem }}
+    </div>
     <div class="botoes">
         <button v-for="(letra, indice) in letras" @click="inserirLetra(letra, indice)" v-show="botoesRemovidos.indexOf(indice) < 0">{{ letra }}</button>
     </div>
@@ -34,7 +37,8 @@ export default {
       palavrasEscondidas: [],
       palavrasEncontradas: [],
       botoesRemovidos: [],
-      anagrama: ""
+      anagrama: '',
+      mensagem: ''
     };
   },
   
@@ -42,8 +46,20 @@ export default {
     inserirLetra(letra, indice) {
       this.anagrama += letra;
       this.botoesRemovidos.push(indice);
-      if(this.palavras.indexOf(this.anagrama) > -1 && this.palavrasEncontradas.indexOf(this.anagrama) == -1){
+      if(this.palavras.indexOf(this.anagrama) > -1 && this.palavrasEncontradas.indexOf(this.anagrama)
+        == -1){
         this.palavrasEncontradas.push(this.anagrama);
+        if(this.palavrasEncontradas.length == 1){
+          this.mensagem = 'Parabéns, você encontrou seu primeiro anagrama.'
+        }
+        if(this.palavrasEncontradas.length == (this.palavras.length - 1)){
+          this.mensagem = 'Vamos lá, só falta uma.'
+        }
+        if(this.palavrasEncontradas.length == this.palavras.length){
+          this.mensagem =
+            'Parabéns, você encontrou todos os anagramas!'
+        }
+        setTimeout(() => this.mensagem = '', 2500);
         this.limparAnagrama();
       }
     },
@@ -93,6 +109,12 @@ li {
 
 .representacao {
  color: tomato;
+}
+
+.mensagem {
+  background-color: rgba($cor-do-botao, 0.5);
+  color: white;
+  padding: 15px;
 }
 
 </style>
