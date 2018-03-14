@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <cabecalho/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import Cabecalho from './components/Cabecalho'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    'cabecalho': Cabecalho
+  }
 }
 </script>
 
