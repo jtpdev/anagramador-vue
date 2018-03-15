@@ -87,7 +87,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$cor-padrao: steelblue;
+
+@import '../estilo.scss';
 
 li {
   list-style: none;

@@ -17,7 +17,8 @@ export default {
 </script>
 
 <style lang="scss">
-$cor-do-botao: steelblue;
+
+@import './estilo.scss';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -29,10 +30,10 @@ $cor-do-botao: steelblue;
 }
 
 button {
-  background-color: $cor-do-botao;
+  background-color: $cor-padrao;
   color: white;
   margin: 5px;
-  border-color: $cor-do-botao;
+  border-color: $cor-padrao;
   border-radius: 5px;
   font-size: 20px;
 }
