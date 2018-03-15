@@ -86,17 +86,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-$cor-do-botao: steelblue;
-
-button {
-  background-color: $cor-do-botao;
-  color: white;
-  margin: 5px;
-  border-color: $cor-do-botao;
-  border-radius: 5px;
-  font-size: 20px;
-}
+<style lang="scss" scoped>
+$cor-padrao: steelblue;
 
 li {
   list-style: none;
@@ -108,7 +99,7 @@ li {
   display: inline-block;
   float: left;
   font-size: 20px;
-  color: $cor-do-botao;
+  color: $cor-padrao;
   margin-bottom: 15px;
 }
 
@@ -117,7 +108,7 @@ li {
 }
 
 .mensagem {
-  background-color: rgba($cor-do-botao, 0.5);
+  background-color: rgba($cor-padrao, 0.5);
   color: white;
   padding: 15px;
 }

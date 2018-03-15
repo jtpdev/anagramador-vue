@@ -16,7 +16,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+$cor-do-botao: steelblue;
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -24,5 +26,14 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+button {
+  background-color: $cor-do-botao;
+  color: white;
+  margin: 5px;
+  border-color: $cor-do-botao;
+  border-radius: 5px;
+  font-size: 20px;
 }
 </style>

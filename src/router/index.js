@@ -5,7 +5,7 @@ import Instrucoes from '@/components/Instrucoes'
 
 Vue.use(Router)
 
-export var routes = [
+export const routes = [
   {
     path: '/',
     name: 'anagramador',
