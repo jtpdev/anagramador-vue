@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Anagramador from '@/components/Anagramador'
 import Instrucoes from '@/components/Instrucoes'
+import BuscadorDeAnagramas from '@/components/BuscadorDeAnagramas'
 
 Vue.use(Router)
 
@@ -17,6 +18,12 @@ export const routes = [
     name: 'instrucoes',
     component: Instrucoes,
     descricao: 'Instruções'
+  },
+  {
+    path: '/buscar',
+    name: 'buscar',
+    component: BuscadorDeAnagramas,
+    descricao: 'Buscador de anagramas'
   }
 ];
 

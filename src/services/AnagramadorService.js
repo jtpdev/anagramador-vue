@@ -12,11 +12,17 @@ export default class AnagramadorService {
             });
     }
 
-    gerarAnagramas(min, max) {
+    buscarAnagramas(palavra, min = 3){
+        return this.gerarAnagramas(min, palavra.length, palavra.toUpperCase());
+    }
+
+    gerarAnagramas(min, max, palavraBase = '') {
         return this.dicionario()
             .then(palavras => {
                 this._palavras = palavras;
-                let palavraBase = this._getPalavraPorTamanho(max);
+                if(palavraBase.length == 0){
+                    palavraBase = this._getPalavraPorTamanho(max)
+                }
                 let letras = palavraBase.split('');
                 let anagramas = this._encontrarPalavras(palavraBase, min, max);
                 anagramas = anagramas.sort((p1, p2) => p1.length - p2.length);

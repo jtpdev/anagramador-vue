@@ -10,7 +10,7 @@
     </div>
     <div>
       {{ anagrama }}
-      <button @click="limparAnagrama">Limpar</button>
+      <button v-on:click="limparAnagrama">Limpar</button>
     </div>
     <div class="palavras">
         <ul>
