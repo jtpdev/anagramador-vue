@@ -12,7 +12,7 @@ export default class AnagramadorService {
             });
     }
 
-    buscarAnagramas(palavra, min = 3){
+    buscarAnagramas(palavra, min = 3, max = 7){
         return this.gerarAnagramas(min, palavra.length, palavra.toUpperCase());
     }
 
