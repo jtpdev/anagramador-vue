@@ -1,6 +1,6 @@
-# anagramador
+# Anagramador
 
-> A Vue.js project
+> Um projeto feito com Vue para criar anagramas para o livro **Vue: Uma abordagem prática**.
 
 ## Build Setup
 
