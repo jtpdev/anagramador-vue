@@ -1,6 +1,6 @@
 # Anagramador
 
-> Um projeto feito com Vue para criar anagramas para o livro **Vue: Uma abordagem prática**.
+> Um projeto feito com Vue para criar anagramas para o livro [**Vue: Uma abordagem prática**](https://www.amazon.com.br/dp/B07BL4JSSF).
 
 ## Build Setup
 
