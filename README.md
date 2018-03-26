@@ -1,5 +1,7 @@
 # Anagramador
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ef3d4c1bd61e4f95a1068d9f9464eeec)](https://www.codacy.com/app/jtpdev/anagramador-vue?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jtpdev/anagramador-vue&amp;utm_campaign=Badge_Grade)
+
 > Um projeto feito com Vue para criar anagramas para o livro [**Vue: Uma abordagem prática**](https://www.amazon.com.br/dp/B07BL4JSSF).
 
 ## Build Setup
